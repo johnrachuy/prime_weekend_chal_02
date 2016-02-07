@@ -20,6 +20,13 @@ $(document).ready(function(){
         dislayClassmate(classmateIndex);
     });
 
+    $('.index-nav').on('click', function(event) {
+        console.log("hi");
+        var id = event.target.id.slice(5);
+        classmateIndex = id;
+        dislayClassmate(id);
+    });
+
     getData();
 });
 
@@ -29,6 +36,7 @@ function getData(){
         url:"/data",
         success: function(data) {
             processData(data.people);
+            createIndexNav();
             dislayClassmate(classmateIndex);
         },
         error: function() {
@@ -50,4 +58,12 @@ function processData(peopleData) {
 function dislayClassmate(displayPosition) {
     $('#peopleContainer').children().first().remove();
     $('#peopleContainer').append(classmateArray[displayPosition]);
+}
+
+function createIndexNav() {
+    //classmateArray
+    for (i = 0; i < classmateArray.length; i++) {
+        $('.index-nav').append('<div class="index-point" id="index' + i + '">' + (i+1) + '</div>');
+    }
+
 }
