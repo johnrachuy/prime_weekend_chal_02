@@ -29,9 +29,17 @@ $(document).ready(function(){
     $('.index-nav').on('click', function(event) {
         var id = event.target.id.slice(5);
 
-        updateSelectedIndex(classmateIndex, id);
-        classmateIndex = id;
-        dislayClassmate(id);
+        if (id != '') {
+            updateSelectedIndex(classmateIndex, id);
+            classmateIndex = id;
+            dislayClassmate(id);
+        }
+
+
+    });
+
+    $('a').on('click', function() {
+        return false;
     });
 
     getData();
@@ -58,8 +66,8 @@ function processData(peopleData) {
 
         var per = peopleData[person];
 
-        classmateArray.push('<div class="insert">' + per.name + '<br>' + per.favoriteMovie1 + '<br>' +
-            per.favoriteMovie2 + '<br>' + per.favoriteSong + '<br>' + '</div>');
+        classmateArray.push('<div class="insert"><h1>' + per.name + '</h1><br><h3>' + per.favoriteMovie1 + '<br>' +
+            per.favoriteMovie2 + '<br>' + per.favoriteSong + '<br>' + '</h3></div>');
     }
 }
 
