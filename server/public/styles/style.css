@@ -1,10 +1,14 @@
 .index-point {
     width: 30px;
     height: 30px;
-    background-color: red;
+    background-color: tan;
     display: inline-block;
 }
 
 .index-point:hover {
-    background-color: green;
+    font-weight: bold;
+}
+
+.index-point-selected {
+    background-color: orange;
 }

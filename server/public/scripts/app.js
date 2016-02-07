@@ -3,26 +3,33 @@ var classmateIndex = 0;
 
 $(document).ready(function(){
     $('#next-button').on('click', function() {
+        var storedIndex = classmateIndex;
+
         if (classmateIndex == 18) {
             classmateIndex = 0;
         } else {
             classmateIndex++;
         }
         dislayClassmate(classmateIndex);
+        updateSelectedIndex(storedIndex, classmateIndex);
     });
 
     $('#prev-button').on('click', function() {
+        var storedIndex = classmateIndex;
+
         if (classmateIndex == 0) {
             classmateIndex = 18;
         } else {
             classmateIndex--;
         }
         dislayClassmate(classmateIndex);
+        updateSelectedIndex(storedIndex, classmateIndex);
     });
 
     $('.index-nav').on('click', function(event) {
-        console.log("hi");
         var id = event.target.id.slice(5);
+
+        updateSelectedIndex(classmateIndex, id);
         classmateIndex = id;
         dislayClassmate(id);
     });
@@ -38,6 +45,7 @@ function getData(){
             processData(data.people);
             createIndexNav();
             dislayClassmate(classmateIndex);
+            updateSelectedIndex(classmateIndex, classmateIndex);
         },
         error: function() {
             console.log('ERROR: Unable to contact the server.');
@@ -61,9 +69,14 @@ function dislayClassmate(displayPosition) {
 }
 
 function createIndexNav() {
-    //classmateArray
     for (i = 0; i < classmateArray.length; i++) {
         $('.index-nav').append('<div class="index-point" id="index' + i + '">' + (i+1) + '</div>');
     }
 
 }
+
+function updateSelectedIndex(oldSelectedIndex, newSelectedIndex) {
+    $('#index' + oldSelectedIndex).removeClass('index-point-selected');
+    $('#index' + newSelectedIndex).addClass('index-point-selected');
+}
+
