@@ -34,14 +34,8 @@ $(document).ready(function(){
             classmateIndex = id;
             dislayClassmate(id);
         }
-
-
     });
-
-    $('a').on('click', function() {
-        return false;
-    });
-
+    
     getData();
 });
 
