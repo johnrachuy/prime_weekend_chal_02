@@ -35,7 +35,7 @@ $(document).ready(function(){
             dislayClassmate(id);
         }
     });
-    
+
     getData();
 });
 
@@ -60,8 +60,8 @@ function processData(peopleData) {
 
         var per = peopleData[person];
 
-        classmateArray.push('<div class="insert"><h1>' + per.name + '</h1><br><h3>' + per.favoriteMovie1 + '<br>' +
-            per.favoriteMovie2 + '<br>' + per.favoriteSong + '<br>' + '</h3></div>');
+        classmateArray.push('<div class="insert"><h2>' + per.name + '</h2><br><h4>' + per.favoriteMovie1 + '<br>' +
+            per.favoriteMovie2 + '<br>' + per.favoriteSong + '<br>' + '</h4></div>');
     }
 }
 
